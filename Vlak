@@ -10,5 +10,13 @@ package controller;
  * @author Fleur
  */
 public class Vlak {
+    private int positieX;
+    private int positieY;
+    int size = 64;          //we can use either 32 pixel image squeares(standard) or aestatically pleasing 64 pixels. 
     
+    public Vlak(int posX, int posY){
+    this.positieX = posX;
+    this.positieY = posY;
+    
+    }
 }
