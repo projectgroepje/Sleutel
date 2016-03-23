@@ -10,5 +10,14 @@ package controller;
  * @author Fleur
  */
 public class Level{
-    
+   private int levelnummer;
+   int aantalTegels
+
+public int getlevelNummer(){
+return levelNummer;
+    }
+public int get aantalTegels(){
+return aantalTegels;
+    }    
 }
+
