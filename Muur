@@ -10,5 +10,9 @@ package controller;
  * @author Fleur
  */
 public class Muur extends Vlak {
+    private int muurwaarde;
     
+    public void Bounce(){
+    
+    }
 }
