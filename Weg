@@ -1,0 +1,48 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package timerentekenen;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+/**
+ *
+ * @author AnnMarie
+ */
+public class Weg {
+
+    private Color kleur;
+    private int width;
+    private int height;
+    private int x;
+    private int y;
+
+    public Weg(Color kleur,  int width, int height) {
+        this.kleur = kleur;
+        this.width = width;
+        this.height = height;
+
+    }
+
+    public void start(Graphics g, int x, int y) {
+
+        //g.setColor(Color.RED);
+        //g.fillRect(1, 1, 47, 47);
+
+        g.setColor(kleur);
+        g.fillRect(x, y, width, height);
+    }
+
+    public void eind(Graphics g,  int x, int y) {
+       // g.setColor(Color.GREEN);
+        //g.fillRect(435, 435, 45, 45);
+
+        g.setColor(kleur);
+        g.fillRect(x, y, width, height);
+
+    }
+
+}
