@@ -10,5 +10,15 @@ package controller;
  * @author Fleur
  */
 public class Speler {
-    
+  enum karakter;
+  int positieX;
+  int positieY
+  int Sleutelwaarde;
+  
+/* move (direction)
+oppakkenenEventueelvervangen(Sleutel){}
+openBaricade(){}
+setSleutelwaarde(){}
+
+
 }
