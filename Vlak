@@ -14,6 +14,7 @@ public class Vlak {
     private int positieY;
     int size = 32;          //we can use either 32 pixel image squeares(standard) or aestatically pleasing 64 pixels. 
     private Speler speler; // there can be 0..1 spelers on vlak. if player moves to a vlak, world calls setSpeler
+    private boolean Actief = false;
     
     public Vlak(int posX, int posY){
     this.positieX = posX;
