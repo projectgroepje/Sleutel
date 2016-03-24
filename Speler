@@ -3,22 +3,50 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package timerentekenen;
+
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
- * @author Fleur
+ * @author AnnMarie
  */
-public class Speler {
-  enum karakter;
-  int positieX;
-  int positieY
-  int Sleutelwaarde;
-  
-/* move (direction)
-oppakkenenEventueelvervangen(Sleutel){}
-openBaricade(){}
-setSleutelwaarde(){}
+public class speler {
 
+    private int  tileX, tileY;
+    
+    private Image speler1;
+
+    public speler() {
+
+        ImageIcon img = new ImageIcon("/Users/AnnMarie/Desktop/project/speler.png");
+        speler1 = img.getImage();
+
+        tileX = 0;
+        tileY = 0;
+
+    }
+
+    public Image getPlayer() {
+        return speler1;
+    }
+
+    public int gettileX() {
+        return tileX;
+    }
+
+    public int gettileY() {
+        return tileY;
+    }
+
+    public void move(int tileX, int tileY) {
+        
+        this.tileX += tileX;
+        this.tileY += tileY;
+
+    }
+
+    
 
 }
