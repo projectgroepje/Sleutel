@@ -11,6 +11,10 @@ package controller;
  */
 public class Eindvlak extends Vlak {
     private String MeldingTekst;
+    private /*(static?)*/ int positieX;
+    private int positieY;
+    // if our levels differ in size/number of tiles we must make sure to get a finalposition variable in the level class that we can send
+    // to this class.
     
     public void Melding(){
      public void Melding(){
