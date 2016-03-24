@@ -21,4 +21,8 @@ public class Eindvlak extends Vlak {
       JOptionPane.showMessage(null, MeldingTekst, "Gefeliciteerd, je hebt gewonnen!", JOptionPane.PLAIN_MESSAGE);
     }
     }
+    
+    //Ann-Marie
+    public void test(){
+    }
 }
