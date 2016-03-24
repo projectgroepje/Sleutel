@@ -10,5 +10,12 @@ package controller;
  * @author Fleur
  */
 public class Baricade extends Vlak {
-    
+    private int BaricadeWaarde;
+    private String MeldingTekst;
+    public void verwijn(){
+    // make image disaapear
+    }
+    public void Melding(){
+    /*  JOptionPane.showMessage(null, MeldingTekst, "Deze sleutel past niet op dit slot.", JOptionPane.PLAIN_MESSAGE);
+    }
 }
