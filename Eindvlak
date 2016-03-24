@@ -10,5 +10,11 @@ package controller;
  * @author Fleur
  */
 public class Eindvlak extends Vlak {
+    private String MeldingTekst;
     
+    public void Melding(){
+     public void Melding(){
+      JOptionPane.showMessage(null, MeldingTekst, "Gefeliciteerd, je hebt gewonnen!", JOptionPane.PLAIN_MESSAGE);
+    }
+    }
 }
