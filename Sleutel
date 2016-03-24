@@ -10,5 +10,14 @@ package controller;
  * @author Fleur
  */
 public class Sleutel extends Vlak {
+    private int sleutelwaarde;
     
+    public void getSleutelWaarde(){
+    
+    }
+    /* public void Oppakken(){
+    // when speler hits this vlak (and possibly hits a key) 
+    it hides itself (image) or the controller class deletes it and replaces it with a normal vlak,
+    and the sleutelwaarde of this sleutel becomes the new sleutelwaarde in Speler. 
+    } */
 }
