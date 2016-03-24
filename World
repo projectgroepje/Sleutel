@@ -16,6 +16,14 @@ public class Controller {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        /*construct new level, load the menu and speelveld panel using information from level. 
+         
+         
+         // if sleutel gets picked up, distribute a new Vlak on the old position of Sleutel
+        
+        
+        */
     }
     
 }
