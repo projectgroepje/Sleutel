@@ -10,5 +10,12 @@ package controller;
  * @author Fleur
  */
 public class Menu {
+    private int level
+    JButton btnreset;
+    JButton btntryagain;
     
+   /* public void reset(){}
+    public void tryagain90{} */
+    
+   /*maybe in controller  public void saveGame(){}*/
 }
