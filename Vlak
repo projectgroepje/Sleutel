@@ -17,6 +17,13 @@ public class Vlak {
     public Vlak(int posX, int posY){
     this.positieX = posX;
     this.positieY = posY;
-    
     }
+  /*  public void setpositieX(int plek){
+    plek = plek;
+    }
+    public void setpositieY(int plek){
+    plek = plek;
+    } */
+    
+    
 }
