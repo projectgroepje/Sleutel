@@ -13,6 +13,6 @@ public class Muur extends Vlak {
     private int muurwaarde;
     
     public void Bounce(){
-    
+    // if pos == laatste positie (map.level) ) or if ( no left neighboor/ right neigbour){ pos = 0/ laastepositie}
     }
 }
