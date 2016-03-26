@@ -46,7 +46,15 @@ public class speler {
         this.tileY += tileY;
 
     }
-
     
-
+    //check if speler is at the eind
+    public void checkSpelerPos() {
+    
+        if (tileX == 9 && tileY == 9) {
+            JOptionPane j = new JOptionPane();
+            j.showMessageDialog(null, "Gefeliciteerd, je hebt gewonnen!", "resultaat", JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+    }
+    
 }
