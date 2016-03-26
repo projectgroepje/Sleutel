@@ -136,6 +136,8 @@ public class TekenPanel extends javax.swing.JPanel implements ActionListener, Ke
         mijnSpook.gaatEensEffeWeg(this.getWidth(), this.getHeight());
 
         repaint();
+        s.checkSpelerPos();
+
 
     }
 
