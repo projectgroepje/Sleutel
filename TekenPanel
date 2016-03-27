@@ -98,17 +98,25 @@ public class TekenPanel extends javax.swing.JPanel implements ActionListener {
 
         if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
             s.move(-1, 0);
+            s.checkSpelerOut(0, 0);
+
         }
         if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
             s.move(1, 0);
+            s.checkSpelerOut(0, 0);
+
         }
 
         if (evt.getKeyCode() == KeyEvent.VK_UP) {
             s.move(0, -1);
+            s.checkSpelerOut(0, 0);
+
         }
 
         if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
             s.move(0, 1);
+            s.checkSpelerOut(0, 0);
+
         }
 
     }                               
