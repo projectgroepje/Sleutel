@@ -57,4 +57,13 @@ public class speler {
         }
     }
     
+    //check if speler is outside the panel
+    public void checkSpelerOut(int newposX, int newposY) {
+
+        if (tileX > 9 || tileY > 9 || tileX < 0 || tileY < 0) {
+            this.tileX = newposX;
+            this.tileY = newposY;
+        }
+    }
+    
 }
