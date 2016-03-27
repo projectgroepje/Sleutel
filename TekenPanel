@@ -5,11 +5,7 @@
  */
 package timerentekenen;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -17,13 +13,11 @@ import javax.swing.*;
  *
  * @author AnnMarie
  */
-public class TekenPanel extends javax.swing.JPanel implements ActionListener, KeyListener {
+public class TekenPanel extends javax.swing.JPanel implements ActionListener {
 
-    private Color lijnKleur = Color.white;
-    private Spook mijnSpook = new Spook(Color.MAGENTA, 20);
 
-    private maps m = new maps();
-    private speler s = new speler();
+    private Maps m = new Maps();
+    private Speler s = new Speler();
 
     private Weg begin = new Weg(Color.RED, 47, 47);
     private Weg eind = new Weg(Color.GREEN, 45, 45);
@@ -67,7 +61,7 @@ public class TekenPanel extends javax.swing.JPanel implements ActionListener, Ke
 
         begin.start(g, 1, 1);
         eind.eind(g, 435, 435);
-        g.drawImage(s.getPlayer(), s.gettileX() * 48, s.gettileY() * 48, null);
+        g.drawImage(s.getPlayer(), s.getTileX() * 48, s.getTileY() * 48, null);
 
     }
 
@@ -80,11 +74,6 @@ public class TekenPanel extends javax.swing.JPanel implements ActionListener, Ke
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                formMouseClicked(evt);
-            }
-        });
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -103,23 +92,23 @@ public class TekenPanel extends javax.swing.JPanel implements ActionListener, Ke
         );
     }// </editor-fold>                        
 
-    private void formMouseClicked(java.awt.event.MouseEvent evt) {                                  
-        //int x = evt.getX();
-        //int y = evt.getY();
-
-        if (evt.getClickCount() == 2) {
-            s.move(1, 0);
-
-        }
-
-
-    }                                 
-
+    
     private void formKeyPressed(java.awt.event.KeyEvent evt) {                                
         // TODO add your handling code here:
 
+        if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
+            s.move(-1, 0);
+        }
         if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
             s.move(1, 0);
+        }
+
+        if (evt.getKeyCode() == KeyEvent.VK_UP) {
+            s.move(0, -1);
+        }
+
+        if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+            s.move(0, 1);
         }
 
     }                               
@@ -130,51 +119,10 @@ public class TekenPanel extends javax.swing.JPanel implements ActionListener, Ke
     @Override
     public void actionPerformed(ActionEvent e) {
         //repaint(); //panel repaint = this.repaint
-
-        veranderLijnKleur();
-
-        mijnSpook.gaatEensEffeWeg(this.getWidth(), this.getHeight());
-
+                
         repaint();
         s.checkSpelerPos();
 
-
-    }
-
-    private void veranderLijnKleur() {
-        if (this.lijnKleur == Color.WHITE) {
-            this.lijnKleur = Color.BLACK;
-        } else {
-            this.lijnKleur = Color.WHITE;
-        }
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            s.move(-1, 0);
-        }
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            s.move(1, 0);
-        }
-
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
-            s.move(0, -1);
-        }
-
-        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            s.move(0, 1);
-        }
-        repaint();
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
     }
 
 }
