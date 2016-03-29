@@ -5,10 +5,244 @@
  */
 package controller;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+
 /**
  *
- * @author Fleur
+ * @author AnnMarie
  */
-public class Speelveld {
-    //a constructor must have the number of tiles in it, a number that it gets from level. 
-}
+public class Speelveld extends javax.swing.JPanel {
+
+    
+    private Color lijnKleur = Color.white;
+    private MapBuilder m = new MapBuilder();
+    private Speler s = new Speler();
+
+    private Weg begin = new Weg(Color.RED, 47, 47);
+    private Weg eind = new Weg(Color.GREEN, 45, 45);
+    
+    private Vlak[][] vlakken;
+
+    public Speelveld(Color color, int width, int height) {
+        initComponents();
+
+        setBackground(color);
+        setSize(width, height);
+        this.setFocusable(true);
+        requestFocus();
+        InstantieerVlakken();
+        Timer t = new Timer(1000, (ActionListener) this);
+        t.start();
+
+    }
+    
+    public static void main(String[] args) {
+        // TODO code application logic here
+
+        TekenFrame t = new TekenFrame();
+        t.setVisible(true);
+        t.setLocationRelativeTo(null);
+        t.setTitle("Sleutelbarricade");
+        t.setSize(480, 500);
+     
+       Speelveld panel = new Speelveld(Color.DARK_GRAY,500,500);
+        t.add(panel);
+   /* roep nieuw speelveld met level.returnaantalvlakken();    Speeldveld sp = new Speelveld(Grey, Level, 10);*/
+    }
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        //g.setColor(lijnKleur);
+        //g.drawOval(100, 100, 200, 200);
+
+        for (int y = 0; y < 10; y++) {
+            for (int x = 0; x < 10; x++) {
+                if (m.getMap(x, y).equals("n")) {
+                    g.drawImage(m.getNormaalPanel(), x * 48, y * 48, null);
+                }
+                if (m.getMap(x, y).equals("b")) {
+                    g.drawImage(m.getbarricade(), x * 48, y * 48, null);
+                }
+                if (m.getMap(x, y).equals("m")) {
+                    g.drawImage(m.getMuur(), x * 48, y * 48, null);
+                }
+                if (m.getMap(x, y).equals("s")) {
+                    g.drawImage(m.getsleutel(), x * 48, y * 48, null);
+                }
+            }
+
+        }
+
+        begin.start(g, 1, 1);
+        eind.eind(g, 435, 435);
+      //  g.drawImage(s.getPlayerImage(), s.gettileX() * 48, s.gettileY() * 48, null);
+
+    }
+    public void InstantieerVlakken(){
+        vlakken  = new Vlak[10][10];
+        Eindvlak eindvlak  = new Eindvlak();
+        for (int y = 0; y < 10; y++) {
+            for (int x = 0; x < 10; x++) {
+                if (m.getMap(x, y).equals("n")) {
+                    Vlak v = new Vlak();
+                    if(x == 0)
+                    {
+                        v.setLinkerBuur(null);
+                    }
+                    else
+                    {
+                        v.setLinkerBuur(vlakken[x-1][y]);
+                    }
+                    if(y == 0)
+                    {
+                        v.setBovenBuur(null);
+                    }
+                    else
+                    {
+                        v.setBovenBuur(vlakken[x][y-1]);
+                    }
+                    if(x == 9)
+                    {
+                        v.setRechterBuur(null);
+                    }
+                    else
+                    {
+                        v.setRechterBuur(vlakken[x+1][y]);
+                    }
+                    if(y == 9)
+                    {
+                        v.setOnderBuur(null);
+                    }
+                    else
+                    {
+                        v.setOnderBuur(vlakken[x][y+1]);
+                    }
+                }
+                if (m.getMap(x, y).equals("b")) {
+                    Barricade b = new Barricade();
+               if(x == 0)
+                    {
+                        b.setLinkerBuur(null);
+                    }
+                    else
+                    {
+                        b.setLinkerBuur(vlakken[x-1][y]);
+                    }
+                    if(y == 0)
+                    {
+                        b.setBovenBuur(null);
+                    }
+                    else
+                    {
+                        b.setBovenBuur(vlakken[x][y-1]);
+                    }
+                    if(x == 9)
+                    {
+                        b.setRechterBuur(null);
+                    }
+                    else
+                    {
+                        b.setRechterBuur(vlakken[x+1][y]);
+                    }
+                    if(y == 9)
+                    {
+                        b.setOnderBuur(null);
+                    }
+                    else
+                    {
+                        b.setOnderBuur(vlakken[x][y+1]);
+                    }
+                }
+                
+                if (m.getMap(x, y).equals("m")) {
+                     Muur muur = new Muur();
+                         if(x == 0)
+                    {
+                        muur.setLinkerBuur(null);
+                    }
+                    else
+                    {
+                        muur.setLinkerBuur(vlakken[x-1][y]);
+                    }
+                    if(y == 0)
+                    {
+                        muur.setBovenBuur(null);
+                    }
+                    else
+                    {
+                        muur.setBovenBuur(vlakken[x][y-1]);
+                    }
+                    if(x == 9)
+                    {
+                        muur.setRechterBuur(null);
+                    }
+                    else
+                    {
+                        muur.setRechterBuur(vlakken[x+1][y]);
+                    }
+                    if(y == 9)
+                    {
+                        muur.setOnderBuur(null);
+                    }
+                    else
+                    {
+                        muur.setOnderBuur(vlakken[x][y+1]);
+                    } 
+                }
+
+                }
+            }
+
+        }
+
+    private void initComponents() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+    }// </editor-fold>                        
+
+    private void veranderLijnKleur() {
+        if (this.lijnKleur == Color.WHITE) {
+            this.lijnKleur = Color.BLACK
+        }
+        else {
+            this.lijnKleur = Color.WHITE
+        }
+           repaint();
+    }
+// I have no clue what this error means: enum, class or interface expected
