@@ -10,19 +10,33 @@ package controller;
  * @author Fleur
  */
 public class Eindvlak extends Vlak {
+
     private String MeldingTekst;
-    private /*(static?)*/ int positieX;
-    private int positieY;
+ 
     // if our levels differ in size/number of tiles we must make sure to get a finalposition variable in the level class that we can send
     // to this class.
-    
-    public void Melding(){
-     public void Melding(){
-      JOptionPane.showMessage(null, MeldingTekst, "Gefeliciteerd, je hebt gewonnen!", JOptionPane.PLAIN_MESSAGE);
+    private Color kleur;
+    private int width;
+    private int height;
+   
+
+    public Eindvlak(Color kleur, int width, int height) {
+        this.kleur = kleur;
+        this.width = width;
+        this.height = height;
     }
+
+    public void eind(Graphics g, int x, int y) {
+        // g.setColor(Color.GREEN);
+        //g.fillRect(435, 435, 45, 45);
+
+        g.setColor(kleur);
+        g.fillRect(x, y, width, height);
+
     }
-    
-    //Ann-Marie
-    public void test(){
+
+    public void Melding() {
+        JOptionPane.showMessageDialog(null, MeldingTekst, "Gefeliciteerd, je hebt gewonnen!", JOptionPane.PLAIN_MESSAGE);
     }
+
 }
