@@ -1,18 +1,18 @@
-
- 
 package Speelveld;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.*;
 
 /**
  *
  * @author Fleur
  */
-public class Speelveld extends javax.swing.JPanel implements ActionListener{
+public class Speelveld extends javax.swing.JPanel implements ActionListener, KeyListener {
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
@@ -43,22 +43,13 @@ public class Speelveld extends javax.swing.JPanel implements ActionListener{
 
     // Variables declaration - do not modify                     
     // End of variables declaration                   
-
-
-
-/**
- *
- * @author AnnMarie
- */
-
-    
     private Color lijnKleur = Color.white;
     private MapBuilder m = new MapBuilder();
     private Speler s = new Speler();
 
     private Weg begin = new Weg(Color.RED, 47, 47);
     private Weg eind = new Weg(Color.GREEN, 45, 45);
-    
+
     private Vlak[][] vlakken;
 
     public Speelveld(Color color, int width, int height) {
@@ -73,21 +64,120 @@ public class Speelveld extends javax.swing.JPanel implements ActionListener{
         t.start();
 
     }
-    
-    public static void main(String[] args) {
-        // TODO code application logic here
 
-        TekenFrame t = new TekenFrame();
-        t.setVisible(true);
-        t.setLocationRelativeTo(null);
-        t.setTitle("Sleutelbarricade");
-        t.setSize(480, 500);
-     
-       Speelveld panel = new Speelveld(Color.DARK_GRAY,500,500);
-        t.add(panel);
-   /* roep nieuw speelveld met level.returnaantalvlakken();    Speeldveld sp = new Speelveld(Grey, Level, 10);*/
+
+
+    public Vlak[][] getVlakken() {
+        return vlakken;
     }
+
+    public void move(KeyEvent moveDirection) {
+        //maybe move actually needs to be in frame so it can acces the instances of vlakken[][]
+        if (moveDirection.getKeyCode() == KeyEvent.VK_LEFT) {
+            //Get the neighbouring Vlak in the direction given, move there, repaint this vlak and repaint the new CurrentVlak.
+
+            if (vlakken[(s.getPositieX() - 1)][s.getPositieY()].getSoort().equals("V")) {
+                s.setCurrentVlak(vlakken[(s.getPositieX() - 1)][s.getPositieY()]);
+                repaint();
+            }
+
+            if (vlakken[(s.getPositieX() - 1)][s.getPositieY()].getSoort().equals("B")) {
+                if ((s.getSleutel().getSleutelWaarde()) == ((Barricade)vlakken[(s.getPositieX() - 1)][s.getPositieY()]).getBarricadeWaarde()) {
+                    s.setCurrentVlak(vlakken[(s.getPositieX() - 1)][s.getPositieY()]);
+                    repaint();
+                } else {
+                    ((Barricade)vlakken[(s.getPositieX() - 1)][s.getPositieY()]).Melding();
+                }
+            }
+            
+            if (vlakken[(s.getPositieX() - 1)][s.getPositieY()].getSoort().equalsIgnoreCase("M")) {
+                s.setCurrentVlak(this.vlakken); //could possibly alos be empty
+            }
+            
+            if (vlakken[(s.getPositieX() - 1)][s.getPositieY()].getSoort().equalsIgnoreCase("E")) {
+                ((Eindvlak)vlakken[(s.getPositieX() - 1)][s.getPositieY()]).Melding();
+            } else if (moveDirection.getKeyCode() == KeyEvent.VK_RIGHT) {
+                if (vlakken[s.getPositieX()][(s.getPositieY() - 1)].getSoort().equals("V")) {
+                    s.setCurrentVlak(vlakken[s.getPositieX()][(s.getPositieY() - 1)]);
+                    repaint();
+                }
+                if (vlakken[s.getPositieX()][(s.getPositieY() - 1)].getSoort().equals("B")) {
+
+                    if ((s.getSleutel().getSleutelWaarde()) == ((Barricade)vlakken[s.getPositieX()][(s.getPositieY() - 1)]).getBarricadeWaarde()) {
+                        s.setCurrentVlak(vlakken[s.getPositieX()][(s.getPositieY() - 1)]);
+                        repaint();
+                    } else {
+                        (((Barricade)vlakken[s.getPositieX()][(s.getPositieY() - 1)]).Melding());
+                    }
+                }
+                if (vlakken[s.getPositieX()][(s.getPositieY() - 1)].getSoort().equalsIgnoreCase("M")) {
+                    s.setCurrentVlak(this.vlakken); //could possibly alos be empty
+                }
+                if (vlakken[s.getPositieX()][(s.getPositieY() - 1)].getSoort().equalsIgnoreCase("E")) {
+                    ((Eindvlak)vlakken[s.getPositieX()][(s.getPositieY()-1)]).Melding();
+                }
+            } else if (moveDirection.getKeyCode() == KeyEvent.VK_UP) {
+                if (vlakken[s.getPositieX()][(s.getPositieY()y - 1)].getSoort().equals("V")) {
+                    s.setCurrentVlak(getVlakken[s.getPositieX()][(s.getPositieY()y - 1)]);
+                    repaint();
+                }
+                if (vlakken[s.getPositieX()][(s.getPositieY()y - 1)].getSoort().equals("B")) {
+
+                    if ((s.getSleutel().getSleutelWaarde()) == ((Barricade) vlakken[s.getPositieX()][(s.getPositieY()y - 1)].getBarricadeWaarde)) {
+                        s.setCurrentVlak(vlakken[s.getPositieX()][(s.getPositieY()y - 1)]);
+                        repaint();
+                    } else {
+                        (((Barricade) vlakken[s.getPositieX()][(s.getPositieY()y - 1)]).Melding());
+                    }
+                }
+                if (vlakken[s.getPositieX()][(s.getPositieY()y - 1)].getSoort().equalsIgnoreCase("M")) {
+                    s.setCurrentVlak(this.vlakken); //could possibly alos be empty
+                }
+                if (vlakken[s.getPositieX()][(s.getPositieY()y - 1)].getSoort().equalsIgnoreCase("E")) {
+                    (Eindvlak) vlakken[s.getPositieX()][(s.getPositieY()y - 1)].melding();
+                }
+            } else if (moveDirection.getKeyCode() == KeyEvent.VK_DOWN) {
+                if (vlakken[s.getPositieX()][(s.getPositieY() + 1)].getSoort().equals("V")) {
+                    s.setCurrentVlak(vlakken[s.getPositieX()][(s.getPositieY() + 1)]);
+                    repaint();
+                }
+                if (vlakken[s.getPositieX()][(s.getPositieY() + 1)].getSoort().equals("B")) {
+
+                    if ((s.getSleutel().getSleutelWaarde()) == ((Barricade) getVlakken()[s.getPositieX()][(s.getPositieY() + 1)]).getBarricadeWaarde()) {
+                        s.setCurrentVlak(vlakken[s.getPositieX()][(s.getPositieY() + 1)]);
+                        repaint();
+                    } else {
+                        ((Barricade)vlakken[s.getPositieX()][(s.getPositieY() + 1)]).Melding();
+                    }
+                }
+                if (vlakken[s.getPositieX()][(s.getPositieY() + 1)].getSoort().equalsIgnoreCase("M")) {
+                    s.setCurrentVlak(this.vlakken); //could possibly alos be empty
+                }
+                if (vlakken[s.getPositieX()][(s.getPositieY() + 1)].getSoort().equalsIgnoreCase("E")) {
+                    ((Eindvlak)vlakken[s.getPositieX()][(s.getPositieY() + 1)]).Melding();
+                }
+            }
+        }
+    }
+
+ 
+
     @Override
+    public void keyTyped(KeyEvent ke) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+@Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         //g.setColor(lijnKleur);
@@ -116,6 +206,7 @@ public class Speelveld extends javax.swing.JPanel implements ActionListener{
       //  g.drawImage(s.getPlayerImage(), s.gettileX() * 48, s.gettileY() * 48, null);
 
     }
+
     public void InstantieerVlakken(){
         vlakken  = new Vlak[10][10];
         Eindvlak eindvlak  = new Eindvlak();
@@ -237,12 +328,11 @@ public class Speelveld extends javax.swing.JPanel implements ActionListener{
             }
 
         }
+    } 
 
     @Override
-     public void actionPerformed(ActionEvent ae) {
+        public void actionPerformed(ActionEvent ae) {
         repaint();
     }
 
    
-}
-  
