@@ -31,7 +31,9 @@ public class Vlak extends JPanel{
         // to 48 by 48. the default size of the panels are 0 by 0, if we dont change it, you wont see the panels inside the frame
         this.setSize(pixelAmount, pixelAmount);
     }
-    
+    public String getSoort(){
+    return soort;
+    }
     public void makeNormaalVlak(int x, int y){
         ImageIcon img = new ImageIcon(getClass().getClassLoader().getResource("Resources/normaal.png"));
         imgNormaalVlak = img.getImage();
