@@ -3,19 +3,39 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package Speelveld;
+
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Fleur
  */
-public class Baricade extends Vlak {
-    private int BaricadeWaarde;
+public class Barricade extends Vlak {
+    private int BarricadeWaarde;
     private String MeldingTekst;
+
+    public Barricade() {
+        buren = new Vlak[4];
+        movableObjects = new MovableGameObject[2];
+        soort = "B";
+    }
+   
+    /**
+     *returns the pincode on the barricade
+     * @return
+     */
+    public int getBarricadeWaarde(){
+    return BarricadeWaarde;
+    }
     public void verwijn(){
     // make image disaapear
     }
     public void Melding(){
-    /*  JOptionPane.showMessage(null, MeldingTekst, "Deze sleutel past niet op dit slot.", JOptionPane.PLAIN_MESSAGE);
+        
+      JOptionPane.showMessageDialog(null, MeldingTekst, "Deze sleutel past niet op dit slot.", JOptionPane.PLAIN_MESSAGE);
     }
+   
+
+  
 }
