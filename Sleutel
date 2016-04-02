@@ -12,10 +12,12 @@ import java.awt.event.KeyListener;
  *
  * @author Fleur
  */
-public class Sleutel extends Vlak implements KeyListener {
+public class Sleutel extends MoveableGameObject implements KeyListener {
     private int sleutelwaarde;
-   
-
+   private boolean Actief = false; //set actief true in Speelveld fe if speler moved to a s vlak. if keylistener picks up 'p' input, check if sleutelvlak ==actief.
+     private int SleutelPosX;
+    private int SleutelPosY; 
+    
     public Sleutel(int posX, int posY) {
         super(posX, posY);
     }
@@ -24,6 +26,9 @@ public class Sleutel extends Vlak implements KeyListener {
     return sleutelwaarde;
     }
    
+    public void setActief(boolean SpeleropVlak){
+        Actief=SpelerOpVlak;
+    }
     public void keyReleased0(KeyEvent e){
         if (Actief == true){
          if (e.getKeyCode() == KeyEvent.VK_P){
