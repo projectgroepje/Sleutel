@@ -3,22 +3,133 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package Speelveld;
+
+import static com.sun.org.apache.bcel.internal.Repository.instanceOf;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author Fleur
+ * @author AnnMarie
  */
-public class Speler {
-  enum karakter;
-  int positieX;
-  int positieY
-  int Sleutelwaarde;
-  
-/* move (direction)
-oppakkenenEventueelvervangen(Sleutel){}
-openBaricade(){}
-setSleutelwaarde(){}
+public class Speler extends MovableGameObject implements  ActionListener, KeyListener {
+    
+    private Image imgspeler;
+    
+    private Sleutel sleutel; // can hold key.
+    
+    private Vlak currentVlak;
+    private int positieX;
+    private int positieY;
 
+    public Speler() {
+        ImageIcon img = new ImageIcon("D:/Afbeeldingen/imgSleutel/Speler1");
+        imgspeler = img.getImage();
+        positieX=0;
+        positieY=0;
+    }
+
+    /**
+     *returns the row
+     * @return
+     */
+    public int getPositieX(){
+        return positieX;
+    }
+    public int getPositieY(){
+        return positieY;
+    }
+    public void setPositieX(int newPosition){
+        positieX = newPosition;
+    }
+    public void setPositieY(int newPosition){
+        positieY = newPosition;
+    }
+
+   
+    
+    public void keyReleased0(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_P){
+            //Get the current key from the Vlak the player is on. Remember to check for nulls
+        }   
+    }
+     
+    public void checkSpelerPos() {
+    
+        if (positieX == 9 && positieY == 9) {
+            JOptionPane j = new JOptionPane();
+            j.showMessageDialog(null, "Gefeliciteerd, je hebt gewonnen!", "resultaat", JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+    }
+    
+    //check if speler is outside the panel
+    public void checkSpelerOut(int newposX, int newposY) {
+
+        if (positieX > 9 || positieY > 9 || positieX < 0 || positieY < 0) {
+            this.positieX = newposX;
+            this.positieY = newposY;
+        }
+    }
+      public void move(int tileX, int tileY) {
+        
+        this.positieX += tileX;
+        this.positieY += tileY;
+
+    }
+     
+    public void pickUpSleutel(Sleutel newSleutel){
+    this.sleutel = newSleutel; 
+    
+    }
+    public Sleutel getSleutel(){
+    return sleutel;
+    }
+    public Image getPlayerImage() {
+        return imgspeler;
+    }
+    public void setCurrentVlak(Vlak huidigVlak){
+        currentVlak=huidigVlak; 
+    }
+    public Vlak getCurrentVlak() {
+        return currentVlak;
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+   
+    
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void setCurrentVlak(Vlak[][] vlakken) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
+
+    
 
 }
