@@ -3,7 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package Speelveld;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.ImageObserver;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -11,8 +16,24 @@ package controller;
  */
 public class Muur extends Vlak {
     private int muurwaarde;
+    private Image imgMuur;
     
-    public void Bounce(){
-    // if pos == laatste positie (map.level) ) or if ( no left neighboor/ right neigbour){ pos = 0/ laastepositie}
+    public Muur() {
+     ImageIcon img = new ImageIcon("/Users/AnnMarie/Desktop/project/muur.png");
+        imgMuur = img.getImage();
+    }
+    @Override
+    public void paintComponent(Graphics g){
+        // call the paintcomponent in the super to draw their own "needed" stuf and then draw what you want yourself
+        super.paintComponent(g);
+        // draw the image you have loaded in the constructor on the panel
+        /**
+         * the first paramter is the image itself
+         * the second and the third paramater are the coordinate of where the image should be drawn
+         * the start coordinates 0,0 is the topleftcorner of this panel. 
+         * the third and the forth parameters are the size of the image
+         * the last one is magic
+         */
+        g.drawImage(imgMuur, 0, 0, 48, 48, (ImageObserver) this);
     }
 }
