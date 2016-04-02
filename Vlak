@@ -3,25 +3,97 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package Speelveld;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author Fleur
  */
 public class Vlak {
-    private int positieX;
-    private int positieY;
-    private int size = 32;          //we can use either 32 pixel image squares(standard) or aestatically pleasing 64 pixels. 
+    private int pixelAmount = 64;          //we can use either 32 pixel image squeares(standard) or aestatically pleasing 64 pixels. 
+    MovableGameObject[] movableObjects; // there can be 0..1 spelers on vlak. if player moves to a vlak, world calls setSpeler
+    String soort;
+    Vlak[] buren;
+    int positieX;
+    int positieY;
+    Image imgvlak; 
     
     
-    
-    public Vlak(int posX, int posY){
-    this.positieX = posX;
-    this.positieY = posY;
-    
-    public void bekijkMijnBuurman(){
-    
+    public Vlak(){
+        buren = new Vlak[4];
+        movableObjects = new MovableGameObject[2];
+        soort = "V";
+        ImageIcon img = new ImageIcon("D:\\Afbeeldingen\\imgSleutel\\normaal.png");
+        imgvlak = img.getImage();
     }
+    
+    public String getSoort(){
+    return this.soort;
+    }
+    public MovableGameObject[] getMovableGameObjects(){
+    return movableObjects;
+    }
+    public void setBovenBuur(Vlak bovenBuur)
+    {
+        this.buren[0] = bovenBuur;
+    }
+
+    /**
+     * @return
+     */
+    public Vlak getBovenBuur()
+    {
+        return this.buren[0];
+    }
+    public void setLinkerBuur(Vlak linkerBuur)
+    {
+        this.buren[1] = linkerBuur;
+    }
+    public Vlak getLinkerBuur()
+    {
+        return this.buren[1];
+    }
+    public void setOnderBuur(Vlak onderBuur)
+    {
+        this.buren[2] = onderBuur;
+    }
+    public Vlak getOnderBuur()
+    {
+        return this.buren[2];
+    }
+    public void setRechterBuur(Vlak rechterBuur)
+    {
+        this.buren[3] = rechterBuur;
+    }
+    public Vlak getRechterBuur()
+    {
+        return this.buren[3];
+    }
+    public void setSpeler(Speler player) {
+        this.movableObjects[1] = player;//There can be a key on the tile so it needs more spaces for moveable objects
+    }
+    
+    public void setSleutel(Sleutel sleutel)
+    {
+        this.movableObjects[0] = sleutel;
+    }
+    
+    public Sleutel getSleutel()
+    {
+        Sleutel returnSleutel =(Sleutel) this.movableObjects[0];    //make temporary variable to be returned.
+        this.movableObjects[0] = null; //Sets the current key to be null.
+        return returnSleutel;//returns the key value to the player.
+    }
+
+    void paintComponent(Graphics g) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void setVisible(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
