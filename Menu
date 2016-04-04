@@ -18,6 +18,8 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        this.getContentPane().setBackground(Color.GRAY);
+
     }
 
     /**
@@ -30,7 +32,6 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         levelsGroup = new javax.swing.ButtonGroup();
-        loadButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         startButton = new javax.swing.JButton();
@@ -40,17 +41,12 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        loadButton.setText("Load Previous Game");
-        loadButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loadButtonActionPerformed(evt);
-            }
-        });
-
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Pick A Level:");
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(86, 188, 86));
+        jLabel2.setForeground(new java.awt.Color(44, 255, 44));
         jLabel2.setText("Sleutel-Barricade Spel");
 
         startButton.setBackground(new java.awt.Color(255, 255, 255));
@@ -86,47 +82,42 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(loadButton))
+                        .addGap(90, 90, 90)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
+                        .addGap(90, 90, 90)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(easyChk)
-                            .addComponent(jLabel1)
-                            .addComponent(mediumChk)
-                            .addComponent(hardChk)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(easyChk)
+                                .addComponent(hardChk))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(mediumChk))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
+                        .addGap(80, 80, 80)
                         .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(loadButton)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addComponent(easyChk)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(4, 4, 4)
                 .addComponent(mediumChk)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(hardChk)
-                .addGap(21, 21, 21)
+                .addGap(22, 22, 22)
                 .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>                        
-
-    private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
-
-    }                                          
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
@@ -143,9 +134,9 @@ public class Menu extends javax.swing.JFrame {
         t.setVisible(true);
         t.setLocationRelativeTo(null);
         t.setTitle("Sleutelbarricade");
-        t.setSize(480, 500);
+        t.setSize(480, 540);
      
-        TekenPanel panel = new TekenPanel(Color.DARK_GRAY,500,500);
+        Speelveld panel = new Speelveld(Color.DARK_GRAY,480,480);
         t.add(panel);
         
     }                                           
@@ -164,6 +155,7 @@ public class Menu extends javax.swing.JFrame {
         m.setLocationRelativeTo(null);
         m.setTitle("Menu");
         
+        
     }
 
     // Variables declaration - do not modify                     
@@ -172,7 +164,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.ButtonGroup levelsGroup;
-    private javax.swing.JButton loadButton;
     private javax.swing.JCheckBox mediumChk;
     private javax.swing.JButton startButton;
     // End of variables declaration                   
