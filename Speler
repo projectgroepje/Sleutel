@@ -6,19 +6,19 @@
 package timerentekenen;
 
 import java.awt.Image;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 
 /**
  *
  * @author AnnMarie
  */
-public class speler {
+public class Speler {
 
-    private int  tileX, tileY;
-    
+    private int tileX, tileY;
+
     private Image speler1;
 
-    public speler() {
+    public Speler() {
 
         ImageIcon img = new ImageIcon("/Users/AnnMarie/Desktop/project/speler.png");
         speler1 = img.getImage();
@@ -32,38 +32,35 @@ public class speler {
         return speler1;
     }
 
-    public int gettileX() {
+    public int getTileX() {
         return tileX;
     }
 
-    public int gettileY() {
+    public int getTileY() {
         return tileY;
     }
 
     public void move(int tileX, int tileY) {
-        
+
         this.tileX += tileX;
         this.tileY += tileY;
 
     }
-    
+
     //check if speler is at the eind
     public void checkSpelerPos() {
-    
+
         if (tileX == 9 && tileY == 9) {
             JOptionPane j = new JOptionPane();
             j.showMessageDialog(null, "Gefeliciteerd, je hebt gewonnen!", "resultaat", JOptionPane.INFORMATION_MESSAGE);
             System.exit(0);
-        }
-    }
-    
-    //check if speler is outside the panel
-    public void checkSpelerOut(int newposX, int newposY) {
 
-        if (tileX > 9 || tileY > 9 || tileX < 0 || tileY < 0) {
-            this.tileX = newposX;
-            this.tileY = newposY;
         }
     }
-    
+
+
+    public void printPos() {
+        System.out.println("x: " + tileX + " Y: " + tileY);
+    }
+
 }
