@@ -219,6 +219,7 @@ public class Speelveld extends javax.swing.JPanel implements ActionListener, Key
             for (int y = 0; y < vlakken[x].length; y++) {
                 if (m.getMap(x, y).equals("n")) {
                       vlak = new Vlak();
+                      vlak.makeNormaalVlak(x,y);
                 
                 }if(m.getMap(x, y).equals("e")) {
                     vlak = new Eindvlak();
