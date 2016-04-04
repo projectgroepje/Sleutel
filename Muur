@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package tweeApril;
-
+package controller;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -17,7 +11,7 @@ import javax.swing.ImageIcon;
 public class Muur extends Vlak {
     private int muurwaarde;
     private Image imgMuur;
-
+    
     public Muur(int x, int y) {
         // the muur should know what kind of image it is. 
         // get the image icon of a path 
@@ -29,11 +23,12 @@ public class Muur extends Vlak {
         // set the location of the panel (make coordinates) so when you add this panel to the frame, the frame
         // should know where to add it. 
         this.setLocation(x * 48, y * 48);
+        soort = "M";
        
     }
     
     
-   
+    
     /**
      * paint component method is a method which all panels have to draw something on the panel.
      * never ever call the paintcomponent manually. let the framework itself call the method.
