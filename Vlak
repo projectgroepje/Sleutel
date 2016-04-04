@@ -1,7 +1,7 @@
-package tweeApril;
+package controller;
 
-import Speelveld.Sleutel;
-import Speelveld.Speler;
+import controller.Sleutel;
+import controller.Speler;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
