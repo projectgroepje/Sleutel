@@ -1,0 +1,129 @@
+package controller;
+
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
+
+
+public class Speler extends MovableGameObject implements ActionListener, KeyListener {
+
+    private Image imgspeler;
+    
+    private Sleutel sleutel; // can hold key.
+
+    private Vlak currentVlak;
+    private int positieX, positieY;   //not sure if currentVlak give both tiles
+
+    public Speler() {
+        ImageIcon img = new ImageIcon(getClass().getClassLoader().getResource("Resources/speler.png"));
+        imgspeler = img.getImage();
+        
+        positieX = 1;
+        positieY = 1;
+    }
+     /**
+     *returns the row
+     * @return
+     */
+    public int getPositieX(){
+        return positieX;
+    }
+    public int getPositieY(){
+        return positieY;
+    }
+    public void setPositieX(int newPosition){
+        positieX = newPosition;
+    }
+    public void setPositieY(int newPosition){
+        positieY = newPosition;
+    }
+    public void IkBesta(){
+    System.out.println("je kunt dit lezen dus ik ben");
+    }
+
+
+    
+
+    public void pickUpSleutel(Sleutel newSleutel) {
+        this.sleutel = newSleutel;
+
+    }
+
+    public Image getPlayerImage() {
+        return imgspeler;
+    }
+
+    
+   /* public void move(int tileX, int tileY) {
+        
+        this.positieX = tileX;
+        this.positieY = tileY;
+        this.repaint();
+   
+    if key = left){
+    
+    this.currentvlak.getleftneighboor().tryandmovehere()
+    
+ tile where speler is. the tile next to me.method for that vlak 
+    
+    }
+    */ 
+    
+    
+    public Sleutel getSleutel(){
+    return sleutel;
+    }
+   
+    public void setCurrentVlak(Vlak huidigVlak){
+        currentVlak=huidigVlak; 
+    }
+    public Vlak getCurrentVlak() {
+        return currentVlak;
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+    //    this.move(e);
+
+        /*speler moet vlak kennen, vlak moet weten of er sleutel of speler op hem staat . sleutel en speler erven van vlakonderdeel. speler gaat van vlak af, speler zegt tegen vlak repaint jezelf, */
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getpositieX() {
+        return positieX;
+    }
+
+    public int getpositieY() {
+        return positieY;
+    }
+
+    public void checkSpelerEind() {
+
+        if (getpositieX() == 9 && getpositieY() == 9) {
+            JOptionPane j = new JOptionPane();
+            j.showMessageDialog(null, "Gefeliciteerd, je hebt gewonnen!", "resultaat", JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+
+    }
+
+}
