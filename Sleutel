@@ -1,0 +1,20 @@
+package controller;
+
+
+public class Sleutel extends MovableGameObject {
+    private int sleutelwaarde;
+    
+    
+    public int getSleutelWaarde(){
+    return sleutelwaarde;
+    }
+    
+    //set a sleutel somewhere
+    //public void InstantieerSleutel() {}
+
+    void setSleutelWaarde(int value) {
+        this.sleutelwaarde=value; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+}
