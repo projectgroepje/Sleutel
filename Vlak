@@ -1,0 +1,152 @@
+package controller;
+
+import controller.Sleutel;
+import controller.Speler;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+
+/**
+ *
+ * @author Fleur
+ * extend from panel
+ * so you can add the vlakjes inside the gameframe
+ * and give the vlakjes sizes or images or locations and that kind of stuff
+ */
+public class Vlak extends JPanel {
+    
+    //private int pixelAmount = 64;   
+    private int pixelAmount = 48;          //we can use either 32 pixel image squeares(standard) or aestatically pleasing 64 pixels. 
+    MovableGameObject[] movableObjects; // there can be 0..1 spelers on vlak. if player moves to a vlak, world calls setSpeler
+    String soort = "V";
+    Vlak[] buren;
+    int PositieX;
+    int PositieY;
+    private Speler s = null;
+    private Image imgNormaalVlak;
+    boolean hasSpeler=false; 
+    if(hasSpeler){
+    
+    }
+   
+    public Vlak(){
+        buren = new Vlak[4];
+        movableObjects = new MovableGameObject[2];
+        // set the size of this panel (and basically all the other panels because they all extends from this class)
+        // to 48 by 48. the default size of the panels are 0 by 0, if we dont change it, you wont see the panels inside the frame
+        this.setSize(pixelAmount, pixelAmount);
+    }
+    
+    public String getSoort(){
+    return soort;
+    }
+    public void getPositieX(){
+    
+    }
+    public void getPositieY(){
+    
+    }
+    public void setPositieX(int myX){
+    this.PositieX=myX;
+    }
+    public void setPositieY(int myY){
+    this.PositieY=myY;
+    }
+    public void makeNormaalVlak(int x, int y){
+        ImageIcon img = new ImageIcon(getClass().getClassLoader().getResource("Resources/normaal.png"));
+        imgNormaalVlak = img.getImage();
+        
+        this.setLocation(x * 48, y * 48);
+    }
+    public void RepaintPlayer() {
+    //
+        
+    }
+    public void tryAndMoveHere(){
+    // calls moveHere
+    }
+    public void moveHere(){
+        // set speler position to new position, repaint the tile, set this.hasspeler to true. 
+        // when u move method updates player position,
+        // does it get updated should trigger hasspeler previous tile. 
+    }
+    public Image getImage(){
+    return imgNormaalVlak;
+    }
+    public void setBovenBuur(Vlak bovenBuur)
+    {
+        this.buren[0] = bovenBuur;
+    }
+    
+    public void setLinkerBuur(Vlak linkerBuur)
+    {
+        this.buren[1] = linkerBuur;
+    }
+    
+    public void setOnderBuur(Vlak onderBuur)
+    {
+        this.buren[2] = onderBuur;
+    }
+    
+    public void setRechterBuur(Vlak rechterBuur)
+    {
+        this.buren[3] = rechterBuur;
+    }
+    
+    public void setSpeler(Speler player) {
+        this.movableObjects[1] = player;//There is a key on the tile.
+    }
+    
+    public void setSleutel(Sleutel sleutel)
+    {
+        this.movableObjects[0] = sleutel;
+    }
+    
+    public Sleutel getSleutel()
+    {
+        Sleutel returnSleutel =(Sleutel) this.movableObjects[0];    //make temporary variable to be returned.
+        this.movableObjects[0] = null; //Sets the current key to be null.
+        return returnSleutel;//returns the key value to the player.
+    }
+    public void setHasSpeler(boolean b) {
+        this.hasSpeler=b;
+    }
+        @Override
+    public void paintComponent(Graphics g){
+        // call the paintcomponent in the super to draw their own "needed" stuf and then draw what you want yourself
+        super.paintComponent(g);
+        // draw the image you have loaded in the constructor on the panel
+        /**
+         * the first paramter is the image itself
+         * the second and the third paramater are the coordinate of where the image should be drawn
+         * the start coordinates 0,0 is the topleftcorner of this panel. 
+         * the third and the forth parameters are the size of the image
+         * the last one is magic
+         */
+        g.drawImage(imgNormaalVlak, 0, 0, 48, 48, this);
+    }
+
+    @Override
+    public int getWidth(ImageObserver io) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getHeight(ImageObserver io) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
+
+    @Override
+    public Graphics getGraphics() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+
+   
+}
